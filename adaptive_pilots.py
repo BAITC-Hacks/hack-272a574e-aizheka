@@ -9,6 +9,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from action_gate import validate_pilot
+
 
 OBSERVATION_STD = 0.804
 PRIOR_RESPONSE_SCALE = 0.10
@@ -357,6 +359,7 @@ class AdaptivePilotStrategy:
             belief, sample_size, _ = next_pilot
             attempts += 1
             try:
+                validate_pilot(env, belief, sample_size)
                 result = env.run_pilot(
                     target_tariff=belief.target_tariff,
                     channel=belief.channel,

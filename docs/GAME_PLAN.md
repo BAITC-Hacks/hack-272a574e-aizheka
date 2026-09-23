@@ -1,8 +1,12 @@
 # Beeline Agent: Game Plan
 
-Updated 2026-09-23 for OpenRouter and the Jev-verified cascade.
-Status: milestone 5 complete on `dev/bayesian-adaptive-pilots` and awaiting user
-verification. Portfolio optimization and live API verification have not started.
+Updated 2026-09-23. Milestone 5 is merged. The user authorized publishing this
+snapshot to main. README.md contains current deployment instructions and results.
+The portfolio experiment regressed and remains disabled; the tested Bayesian
+strategy stays the default. Vercel AI helpers and offline tests exist but are
+not connected to Agent.act. Corrected live requests still receive a billing 403.
+Milestones 6-11 remain incomplete. The checklist below retains the original plan;
+older provider and branch notes are historical, not current deployment guidance.
 
 ## Workspace
 
