@@ -1,24 +1,24 @@
 # Beeline Agent: Game Plan
 
 Updated 2026-09-23 for OpenRouter and the Jev-verified cascade.
-Status: milestone 3 complete on `dev/data-economics` and awaiting user
-verification. Strategy implementation and live API verification have not started.
+Status: milestone 4 complete on `dev/deterministic-shortlist` and awaiting user
+verification. Adaptive strategy implementation and live API verification have not started.
 
 ## Workspace
 
 - Repository: `D:\hackalem\hack-272a574e-aizheka`
 - Origin: `https://github.com/BAITC-Hacks/hack-272a574e-aizheka.git`
-- Branch: `game-plan`, created and verified clean before this document.
+- Current branch: `dev/deterministic-shortlist`, created from updated `main`.
 - Source package: `D:\hackalem\beeline_case_participants`
 - Preserve the source package and copy working files into the repository.
 - Put the Python environment and dependency caches on D: to conserve C: space.
-- All project changes stay on `game-plan`. Merge/push to `main` only after the
-  user explicitly says the product is ready. No commit or push in this step.
+- Use one `dev/NAME-OF-THE-CHANGE` branch per milestone. Merge or push only when
+  the user explicitly requests it; never modify `main` implicitly.
 - Requested development model: GPT-6 Astra. Application semantic provider: Jev.
 
 ## Review of completed work
 
-- D: clone and `game-plan` verified; `main` remains at the initial commit.
+- D: clone and milestone branches verified. Completed milestones 1-3 are on `main`.
 - Participant guide, starter template, evaluation runner, and submission generator
   reviewed. Original participant files remain in their source folder.
 - TypeSafe skill and the four user-provided OpenRouter pages reviewed.
@@ -38,6 +38,8 @@ verification. Strategy implementation and live API verification have not started
   scoring economics were profiled in `docs/DATA_ECONOMICS.md`.
 - Sparse historical transition effects were converted into a deterministic,
   uncertainty-aware prior table in `analysis/transition_priors.csv`.
+- A 5,040-row deterministic candidate universe now produces a validated,
+  diversified 32-item review shortlist in `analysis/candidate_shortlist.csv`.
 
 ## Credentials and test spending
 
@@ -133,12 +135,15 @@ duplicate transitions are removed, and campaign-conversion limitations are expli
 
 ### 4. Build the deterministic shortlist
 
-- [ ] Generate segment / target tariff / channel combinations in Python.
-- [ ] Filter invalid combinations, respect campaign sizes, and preserve diversity.
-- [ ] Start with 20-40 candidates ranked by expected net value and uncertainty;
+- [x] Generate segment / target tariff / channel combinations in Python.
+- [x] Filter invalid combinations, respect campaign sizes, and preserve diversity.
+- [x] Start with 20-40 candidates ranked by expected net value and uncertainty;
   evaluate coverage rather than treating this shortlist size as optimal.
 
-Done when candidates are valid, reproducible, and use supported filters.
+Done: 5,040 valid combinations reduce to 32 distinct evidence-backed transitions
+covering all ARPU segments and channels. Resource ceilings and filters are tested;
+the output is byte-reproducible. Value fields are historical ranking proxies, not
+campaign-conversion forecasts. See `docs/SHORTLIST_REPORT.md`.
 
 ### 5. Add Bayesian learning and adaptive pilots
 
@@ -298,4 +303,4 @@ pages linked above. No cookbook benchmark is treated as evidence for this case.
 
 Clarify runtime/network rules, judging OpenRouter credentials, feature-cache
 packaging, and local-module submission before release. These do not block offline
-work. Next implementation step: import the package and record the baseline.
+work. Next implementation step after review: Bayesian updates and adaptive pilots.
