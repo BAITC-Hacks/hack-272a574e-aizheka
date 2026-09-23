@@ -1,0 +1,28 @@
+# Local credentials. Only the empty-key root example may be tracked.
+.env
+.env.*
+!/.env.example
+.secrets/
+secrets/
+*.key
+*.pem
+
+# Local Python environments and generated files.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.coverage
+htmlcov/
+logs/
+*.log
+tmp/
+
+# Local provider responses and experiment scratch data.
+artifacts/local/
+
+# Case inputs, sanitized reports, and submission.csv remain eligible for tracking.
