@@ -1,8 +1,8 @@
 # Beeline Agent: Game Plan
 
 Updated 2026-09-23 for OpenRouter and the Jev-verified cascade.
-Status: milestone 1 complete and awaiting user verification. Agent implementation,
-baseline benchmarks, and live API verification have not started.
+Status: milestone 2 complete on `dev/baseline-evaluation` and awaiting user
+verification. Strategy implementation and live API verification have not started.
 
 ## Workspace
 
@@ -31,6 +31,9 @@ baseline benchmarks, and live API verification have not started.
   changing the source package. Their SHA-256 hashes match the originals.
 - A Python 3.11 virtual environment was created at `.venv` on D:. The recorded
   dependencies `numpy==2.3.3` and `pandas==2.3.2` are installed and importable.
+- The unchanged starter agent was measured on seed 42 and seeds 0-9. It was
+  unprofitable in every run; full results are in `docs/BASELINE_REPORT.md`.
+- `submission.csv` was generated twice with identical bytes and SHA-256.
 
 ## Credentials and test spending
 
@@ -104,13 +107,13 @@ The input CSV files total about 22 MB. Preserve the originals in the source fold
 
 ### 2. Measure the baseline
 
-- [ ] Preserve the template and copy its initial behavior into `agent.py`.
-- [ ] Run `python local_eval.py`, `python local_eval.py --runs 10`, and
+- [x] Preserve the template and copy its initial behavior into `agent.py`.
+- [x] Run `python local_eval.py`, `python local_eval.py --runs 10`, and
   `python make_submission.py` from the repository root; save outputs and metrics.
-- [ ] Repeat submission generation under the same configuration and compare.
+- [x] Repeat submission generation under the same configuration and compare.
 
-Done when the baseline is measured, with any existing failures documented.
-No baseline scores have been measured at the time this plan was written.
+Done: seed 42 net was `-1,035,279`; the 10-seed median was `-357,948`,
+with `0/10` positive runs. The submission outputs were byte-identical.
 
 ### 3. Validate public data and economics
 
