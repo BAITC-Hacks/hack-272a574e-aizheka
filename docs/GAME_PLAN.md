@@ -1,7 +1,7 @@
 # Beeline Agent: Game Plan
 
 Updated 2026-09-23 for OpenRouter and the Jev-verified cascade.
-Status: milestone 2 complete on `dev/baseline-evaluation` and awaiting user
+Status: milestone 3 complete on `dev/data-economics` and awaiting user
 verification. Strategy implementation and live API verification have not started.
 
 ## Workspace
@@ -34,6 +34,10 @@ verification. Strategy implementation and live API verification have not started
 - The unchanged starter agent was measured on seed 42 and seeds 0-9. It was
   unprofitable in every run; full results are in `docs/BASELINE_REPORT.md`.
 - `submission.csv` was generated twice with identical bytes and SHA-256.
+- Public data, joins, missingness, tariff consistency, pilot observations, and
+  scoring economics were profiled in `docs/DATA_ECONOMICS.md`.
+- Sparse historical transition effects were converted into a deterministic,
+  uncertainty-aware prior table in `analysis/transition_priors.csv`.
 
 ## Credentials and test spending
 
@@ -117,13 +121,15 @@ with `0/10` positive runs. The submission outputs were byte-identical.
 
 ### 3. Validate public data and economics
 
-- [ ] Check schemas, units, missing values, identifiers, joins, and tariff fields.
-- [ ] Estimate historical transition lift and uncertainty with shrinkage for
+- [x] Check schemas, units, missing values, identifiers, joins, and tariff fields.
+- [x] Estimate historical transition lift and uncertainty with shrinkage for
   sparse groups. History describes a different population and is only a prior.
-- [ ] Verify public pilot result fields and scoring semantics, including channel
+- [x] Verify public pilot result fields and scoring semantics, including channel
   effects, eligibility, overlap, and budget allocation, before modeling them.
 
-Done when usable features and assumptions are documented and checked.
+Done: the target and historical populations are disjoint; 451 of 1,260 transition
+groups have evidence, with median support 11. Priors retain uncertainty, exact
+duplicate transitions are removed, and campaign-conversion limitations are explicit.
 
 ### 4. Build the deterministic shortlist
 
