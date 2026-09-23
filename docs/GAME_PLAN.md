@@ -1,8 +1,8 @@
 # Beeline Agent: Game Plan
 
 Updated 2026-09-23 for OpenRouter and the Jev-verified cascade.
-Status: planning and local credential-file scaffolding only; agent implementation,
-data import, benchmarks, and live API verification have not started.
+Status: milestone 1 complete and awaiting user verification. Agent implementation,
+baseline benchmarks, and live API verification have not started.
 
 ## Workspace
 
@@ -22,10 +22,15 @@ data import, benchmarks, and live API verification have not started.
 - Participant guide, starter template, evaluation runner, and submission generator
   reviewed. Original participant files remain in their source folder.
 - TypeSafe skill and the four user-provided OpenRouter pages reviewed.
-- This plan, `.gitignore`, and an empty-key `.env.example` prepared for Git.
+- This plan, `.gitignore`, and an empty-key `.env.example` are committed on
+  `game-plan` and pushed to `origin/game-plan` in commit `42f5cb5`.
 - `.env.local` created with empty credential fields and excluded from Git.
   The credential pasted in chat was neither stored nor used; rotate it and
-  enter its replacement locally. No API calls, commits, or pushes performed.
+  enter its replacement locally. No API calls have been performed.
+- All 16 participant-package files were copied into the repository without
+  changing the source package. Their SHA-256 hashes match the originals.
+- A Python 3.11 virtual environment was created at `.venv` on D:. The recorded
+  dependencies `numpy==2.3.3` and `pandas==2.3.2` are installed and importable.
 
 ## Credentials and test spending
 
@@ -89,9 +94,9 @@ offline path until the organizers clarify the rule.
 ### 1. Import and establish the environment
 
 - [x] Clone onto D:, create `game-plan`, verify source folder, and read the guide.
-- [ ] Copy supplied Python files, guide, dictionaries, profile, and `data/` into
+- [x] Copy supplied Python files, guide, dictionaries, profile, and `data/` into
   the repository with relative paths preserved and harness files unchanged.
-- [ ] Record source hashes, create a D: Python environment, record dependencies,
+- [x] Record source hashes, create a D: Python environment, record dependencies,
   and verify the existing ignore rules cover generated files.
 
 Done when the imported package is traceable and runners resolve their inputs.
