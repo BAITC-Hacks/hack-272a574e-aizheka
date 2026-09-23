@@ -1,14 +1,14 @@
 # Beeline Agent: Game Plan
 
 Updated 2026-09-23 for OpenRouter and the Jev-verified cascade.
-Status: milestone 4 complete on `dev/deterministic-shortlist` and awaiting user
-verification. Adaptive strategy implementation and live API verification have not started.
+Status: milestone 5 complete on `dev/bayesian-adaptive-pilots` and awaiting user
+verification. Portfolio optimization and live API verification have not started.
 
 ## Workspace
 
 - Repository: `D:\hackalem\hack-272a574e-aizheka`
 - Origin: `https://github.com/BAITC-Hacks/hack-272a574e-aizheka.git`
-- Current branch: `dev/deterministic-shortlist`, created from updated `main`.
+- Current branch: `dev/bayesian-adaptive-pilots`, created from updated `main`.
 - Source package: `D:\hackalem\beeline_case_participants`
 - Preserve the source package and copy working files into the repository.
 - Put the Python environment and dependency caches on D: to conserve C: space.
@@ -40,6 +40,8 @@ verification. Adaptive strategy implementation and live API verification have no
   uncertainty-aware prior table in `analysis/transition_priors.csv`.
 - A 5,040-row deterministic candidate universe now produces a validated,
   diversified 32-item review shortlist in `analysis/candidate_shortlist.csv`.
+- A normal-normal Bayesian learner now updates candidate lift beliefs from public
+  pilot outputs and preserves deployment resources with bounded exploration.
 
 ## Credentials and test spending
 
@@ -147,14 +149,17 @@ campaign-conversion forecasts. See `docs/SHORTLIST_REPORT.md`.
 
 ### 5. Add Bayesian learning and adaptive pilots
 
-- [ ] Choose an observation model supported by public pilot outputs; update lift
+- [x] Choose an observation model supported by public pilot outputs; update lift
   estimates and uncertainty after each actual pilot result.
-- [ ] Select the next pilot and sample size by expected decision benefit,
+- [x] Select the next pilot and sample size by expected decision benefit,
   uncertainty, costs, and remaining resources. Reserve capacity for deployment.
-- [ ] Recheck limits before calls; handle small audiences and rejected pilots.
+- [x] Recheck limits before calls; handle small audiences and rejected pilots.
   Stop exploration when further information is unlikely to improve the decision.
 
-Done when changed observations change decisions and limits hold across runs.
+Done: exact Gaussian updates change posterior means, uncertainty, and final
+decisions. Exploration is capped at eight attempts, 1,600 contacts, and 20,000
+budget while reserving deployment capacity. Rejections and complete pilot outage
+have tested fallbacks. See `docs/BAYESIAN_PILOTS_REPORT.md`.
 
 ### 6. Optimize the final portfolio
 
@@ -303,4 +308,4 @@ pages linked above. No cookbook benchmark is treated as evidence for this case.
 
 Clarify runtime/network rules, judging OpenRouter credentials, feature-cache
 packaging, and local-module submission before release. These do not block offline
-work. Next implementation step after review: Bayesian updates and adaptive pilots.
+work. Next implementation step after review: constrained final portfolio optimization.
